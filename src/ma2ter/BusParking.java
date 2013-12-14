@@ -50,10 +50,12 @@ public class BusParking implements Drawable{
 		location = new Point(x,y);
 		size = DEFAULT_SIZE;
 		capacity = cap;
+		Graph.addDrawable(this);
 	}
  	public BusParking(Point p, int cap){
 		location = p;
 		size = DEFAULT_SIZE;
 		capacity = cap;
+		Graph.addDrawable(this);
 	}
 }

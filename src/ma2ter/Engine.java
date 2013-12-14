@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -56,7 +54,7 @@ public class Engine {
 		f = new JFrame("BusParkModel");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(704, 512);
-		f.add(new Graph(park));
+		f.add(new Graph());
 		f.setVisible(true);
 		//JPanel panel
 		JPanel panel = new JPanel();

@@ -8,12 +8,12 @@ import java.awt.Point;
 public class Bus implements Drawable{
 	
 	static final Dimension DEFAULT_SIZE = new Dimension(20,20);
-	static final int MAX_P = 25;
-	static final int MAX_V = 80;
+	static final int MAX_NUMBEROFPASSENGERS = 25;
+	static final int MAX_SPEED = 80;
 	static final Color DEFAULT_COLOR = Color.green;
 	
-	private int v = 3;
-	private int p = 0;
+	private int speed = 3;
+	private int numberOfPassengers = 0;
 	private int numRoute = 0;
 	private int id = 0;
 	private boolean isOnRoute = false;
@@ -36,11 +36,11 @@ public class Bus implements Drawable{
 		return color;
 	}
 	
-	public int getV(){
-		return v;
+	public int getSpeed(){
+		return speed;
 	}
-	public int getP(){
-		return p;
+	public int getNumberOfPassengers(){
+		return numberOfPassengers;
 	}
 	public boolean OnRoute(){
 		return isOnRoute;
@@ -76,18 +76,18 @@ public class Bus implements Drawable{
 	public void move(){
 		if(destination != null){
 			if(location.x != destination.x){
-				if(Math.abs(location.x - destination.x) <= v){
+				if(Math.abs(location.x - destination.x) <= speed){
 					location.x = destination.x;
 				} else {
-					location.x += (location.x < destination.x) ? v : -v;
+					location.x += (location.x < destination.x) ? speed : -speed;
 				}
 			}
 			if(location.y != destination.y){
-				if(Math.abs(location.y - destination.y) <= v)
+				if(Math.abs(location.y - destination.y) <= speed)
 				{
 					location.y = destination.y;
 				} else {
-					location.y += (location.y < destination.y) ? v : -v;
+					location.y += (location.y < destination.y) ? speed : -speed;
 				}
 				
 			}

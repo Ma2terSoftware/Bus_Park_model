@@ -15,9 +15,7 @@ public class Graph extends JPanel {
 	static final ArrayList<Drawable> graphObjects = new ArrayList<Drawable>();
 	
 	//CONSTRUCTORS
-	public Graph(BusDepartment mainBD){
-		
-	}
+
 	//METHODS
 	static void addDrawable(Drawable a){
 		graphObjects.add(a);
