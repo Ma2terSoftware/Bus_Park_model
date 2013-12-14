@@ -1,5 +1,6 @@
 package ma2ter;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 
@@ -9,6 +10,7 @@ public class Bus implements Drawable{
 	static final Dimension DEFAULT_SIZE = new Dimension(20,20);
 	static final int MAX_P = 25;
 	static final int MAX_V = 80;
+	static final Color DEFAULT_COLOR = Color.green;
 	
 	private int v = 3;
 	private int p = 0;
@@ -16,7 +18,7 @@ public class Bus implements Drawable{
 	private int id = 0;
 	private boolean isOnRoute = false;
 	private Point destination = null;
-	
+	private Color color; 
 	
 	private Dimension size;
 	private Point location;
@@ -29,6 +31,9 @@ public class Bus implements Drawable{
 	}
 	public String getName(){
 		return ""+id;
+	}
+	public Color getColor(){
+		return color;
 	}
 	
 	public int getV(){
@@ -57,6 +62,7 @@ public class Bus implements Drawable{
 	public Bus(int id, Point loc){
 		location = new Point(loc);
 		size = DEFAULT_SIZE;
+		color = DEFAULT_COLOR;
 		if(id > 1000 && id < 9999){
 			this.id = id;
 			System.out.println("Bus created. id = " + this.id);
