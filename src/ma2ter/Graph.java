@@ -25,7 +25,7 @@ public class Graph extends JPanel {
 	
 	public void drawObject(Drawable obj, Graphics g){
 		g = (Graphics2D)g;
-		Point loc = obj.getLoc();
+		Point loc = obj.getLocation();
 		Dimension size = obj.getSize();
 		
 		g.setColor(obj.getColor());

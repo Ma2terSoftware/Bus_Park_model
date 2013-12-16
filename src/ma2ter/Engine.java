@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -17,15 +15,15 @@ import javax.swing.Timer;
 public class Engine {
 	JFrame f;
 	
-	BusDepartment park = new BusDepartment();
-
+	BusDepartment busdept = new BusDepartment();
+	RoadDepartment roaddept = new RoadDepartment();
 	//ACTION LISTENERS
 	private class timerTick implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			park.move();
+			busdept.move();
 			f.repaint();
 		}
 	}
@@ -34,16 +32,16 @@ public class Engine {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			Random rand = new Random();
-			park.getBP().testLoc(new Point(rand.nextInt(400), rand.nextInt(400)));
-			Point testDest = new Point(park.getBP().getLoc());
+			busdept.getBP().testLoc(new Point(rand.nextInt(400), rand.nextInt(400)));
+			Point testDest = new Point(busdept.getBP().getLocation());
 			
-			park.getBusByIndex(0).setDest(testDest);
+			busdept.getBusByIndex(0).setDest(testDest);
 		}
 	}
 	private class buttonAddBusClicked implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			park.createBus();
+			busdept.createBus();
 		}
 		
 	}
@@ -56,7 +54,7 @@ public class Engine {
 		f = new JFrame("BusParkModel");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(704, 512);
-		f.add(new Graph(park));
+		f.add(new Graph(busdept));
 		f.setVisible(true);
 		//JPanel panel
 		JPanel panel = new JPanel();

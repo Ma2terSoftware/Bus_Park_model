@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 
-public class Bus implements Drawable{
+public class Bus extends Drawable{
 	
 	static final Dimension DEFAULT_SIZE = new Dimension(20,20);
 	static final int MAX_P = 25;
@@ -18,22 +18,9 @@ public class Bus implements Drawable{
 	private int id = 0;
 	private boolean isOnRoute = false;
 	private Point destination = null;
-	private Color color; 
-	
-	private Dimension size;
-	private Point location;
 	// GETTERS
-	public Point getLoc(){
-		return location;
-	}
-	public Dimension getSize(){
-		return size;
-	}
 	public String getName(){
 		return ""+id;
-	}
-	public Color getColor(){
-		return color;
 	}
 	
 	public int getV(){

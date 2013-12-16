@@ -28,7 +28,7 @@ public class BusDepartment {
 		if(busCount < MAX_BUS)
 		{
 			busCount++;
-			Bus newBus = new Bus(getFreeId(), bPark.getLoc());
+			Bus newBus = new Bus(getFreeId(), bPark.getLocation());
 			busList.add(newBus);
 			return newBus;
 		} else {
