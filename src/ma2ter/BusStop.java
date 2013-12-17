@@ -22,7 +22,7 @@ public class BusStop extends Hub{
 		name = n;
 		color = DEFAULT_COLOR;
 		id = i;
-		Graph.addDrawable(this);
+		Graph.addGraphicObject(this);
 	}
 
 	//METHODS

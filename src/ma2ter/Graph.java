@@ -12,18 +12,18 @@ import javax.swing.JPanel;
 public class Graph extends JPanel {
 
 	private static final long serialVersionUID = 7572860204162547404L;
-	static final ArrayList<Drawable> graphObjects = new ArrayList<Drawable>();
+	static final ArrayList<GraphicObject> graphObjects = new ArrayList<GraphicObject>();
 	
 	//CONSTRUCTORS
-	public Graph(BusDepartment mainBD){
+	public Graph(){
 		
 	}
 	//METHODS
-	static void addDrawable(Drawable a){
+	static void addGraphicObject(GraphicObject a){
 		graphObjects.add(a);
 	}
 	
-	public void drawObject(Drawable obj, Graphics g){
+	public void drawObject(GraphicObject obj, Graphics g){
 		g = (Graphics2D)g;
 		Point loc = obj.getLocation();
 		Dimension size = obj.getSize();
@@ -37,7 +37,7 @@ public class Graph extends JPanel {
 	
 	
 	public void paint(Graphics g){
-		for(Drawable a:graphObjects){
+		for(GraphicObject a:graphObjects){
 			drawObject(a, g);
 		}
 	}

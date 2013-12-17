@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 
-public class Bus extends Drawable{
+public class Bus extends GraphicObject{
 	
 	static final Dimension DEFAULT_SIZE = new Dimension(20,20);
 	static final int MAX_P = 25;
@@ -57,7 +57,7 @@ public class Bus extends Drawable{
 			this.id = 0;
 			System.out.println("Wrong id number of Bus in Bus.java (Method: Bus(int id)). id = " + id);
 		}
-		Graph.addDrawable(this);
+		Graph.addGraphicObject(this);
 	}
 	// METHODS
 	public void move(){

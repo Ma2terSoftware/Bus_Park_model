@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 
-public class Hub extends Drawable{
+public class Hub extends GraphicObject{
 	
 	static final Dimension DEFAULT_SIZE = new Dimension(10,10);
 	static final Color DEFAULT_COLOR = Color.black;
-
+	
 	protected int id;
 	
 	//GETTERS
@@ -24,7 +24,7 @@ public class Hub extends Drawable{
 		name = "" + p.x + " , " + p.y;
 		color = DEFAULT_COLOR;
 		
-		Graph.addDrawable(this);
+		Graph.addGraphicObject(this);
 	}
 	public Hub(){}
 }

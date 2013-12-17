@@ -54,7 +54,7 @@ public class Engine {
 		f = new JFrame("BusParkModel");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(704, 512);
-		f.add(new Graph(busdept));
+		f.add(new Graph());
 		f.setVisible(true);
 		//JPanel panel
 		JPanel panel = new JPanel();
