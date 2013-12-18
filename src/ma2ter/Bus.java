@@ -3,6 +3,7 @@ package ma2ter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.ArrayList;
 
 
 public class Bus extends GraphicObject{
@@ -17,6 +18,8 @@ public class Bus extends GraphicObject{
 	private int numRoute = 0;
 	private int id = 0;
 	private boolean isOnRoute = false;
+	private ArrayList<Point> route = new ArrayList<Point>();
+	private int crntDestNum = -1;
 	private Point destination = null;
 	// GETTERS
 	public String getName(){
@@ -39,11 +42,12 @@ public class Bus extends GraphicObject{
 		return numRoute;
 	}
 	// SETTERS
-	public void setRoute(int route){
-		numRoute = route;
-	}
 	public void setDest(Point dest){
 		destination = dest;
+	}
+	public void setRoute(ArrayList<Point> rt){
+		route = rt;
+		destination = getNextDest();
 	}
 	// CONSTRUCTORS
 	public Bus(int id, Point loc){
@@ -60,6 +64,13 @@ public class Bus extends GraphicObject{
 		Graph.addGraphicObject(this);
 	}
 	// METHODS
+	private Point getNextDest(){
+		
+		if(crntDestNum == route.size()-1) crntDestNum = 0;
+		else crntDestNum++;
+		return route.get(crntDestNum);
+	}
+	
 	public void move(){
 		if(destination != null){
 			if(location.x != destination.x){
@@ -78,8 +89,8 @@ public class Bus extends GraphicObject{
 				}
 				
 			}
-			if(destination.getLocation() == location.getLocation()){
-				destination = null;
+			if(destination.x == location.x && destination.y == location.y){
+				destination = getNextDest();
 			}
 		}
 	}

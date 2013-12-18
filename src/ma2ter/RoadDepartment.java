@@ -9,19 +9,19 @@ public class RoadDepartment {
 	private ArrayList<Hub> hubList = new ArrayList<Hub>();
 	
 	//GETTERS
-	
+	public ArrayList<Hub> getHubList(){
+		return hubList;
+	}
 	//CONSTRUCTORS
 	
 	//METHODS
-	public BusStop createBusStop(){
-		final Random rand = new Random();
-		BusStop newStop = new BusStop(""+hubList.size(),new Point(rand.nextInt(400), rand.nextInt(400)),hubList.size());
+	public BusStop createBusStop(Point loc, String name){
+		BusStop newStop = new BusStop(name,loc,hubList.size());
 		hubList.add(newStop);
 		return newStop;
 	}
-	public Hub createHub(){
-		final Random rand = new Random();
-		Hub newStop = new Hub(new Point(rand.nextInt(400), rand.nextInt(400)),hubList.size());
+	public Hub createHub(Point loc){
+		Hub newStop = new Hub(loc,hubList.size());
 		hubList.add(newStop);
 		return newStop;
 	}

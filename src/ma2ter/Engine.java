@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.BoxLayout;
@@ -45,6 +46,29 @@ public class Engine {
 		}
 		
 	}
+	private class buttonAddHubClicked implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			Random rand = new Random();
+			Hub testHub = roaddept.createHub((new Point(rand.nextInt(400), rand.nextInt(400))));
+		}
+		
+	}
+	private class buttonSetRouteClicked implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			ArrayList<Point> route = new ArrayList<Point>();
+			for(Hub h:roaddept.getHubList()){
+				route.add(h.getLocation());
+			}
+			busdept.getBusByIndex(0).setRoute(route);
+		}
+		
+	}
 	//METHODS
 	void go(){
 
@@ -73,6 +97,18 @@ public class Engine {
 		panel.add(bAddBus);
 		bAddBus.setVisible(true);
 		bAddBus.addActionListener(new buttonAddBusClicked());
+		
+		//Button bAddHub
+		JButton bAddHub = new JButton("Add Hub");
+		panel.add(bAddHub);
+		bAddHub.setVisible(true);
+		bAddHub.addActionListener(new buttonAddHubClicked());
+		
+		//Button bSetRoute
+		JButton bSetRoute = new JButton("Set Route");
+		panel.add(bSetRoute);
+		bSetRoute.setVisible(true);
+		bSetRoute.addActionListener(new buttonSetRouteClicked());
 		
 		//Timer mainTimer
 		Timer mainTimer = new Timer(20, new timerTick());
