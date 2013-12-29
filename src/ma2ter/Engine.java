@@ -16,8 +16,8 @@ import javax.swing.Timer;
 public class Engine {
 	JFrame f;
 	
-	BusDepartment busdept = new BusDepartment();
-	RoadDepartment roaddept = new RoadDepartment();
+	VehicleManipulator busdept = new VehicleManipulator();
+	HubManipulator roaddept = new HubManipulator();
 	//ACTION LISTENERS
 	private class timerTick implements ActionListener {
 
@@ -36,7 +36,7 @@ public class Engine {
 			busdept.getBP().testLoc(new Point(rand.nextInt(400), rand.nextInt(400)));
 			Point testDest = new Point(busdept.getBP().getLocation());
 			
-			busdept.getBusByIndex(0).setDest(testDest);
+			//busdept.getBusByIndex(0).setDest(testDest);
 		}
 	}
 	private class buttonAddBusClicked implements ActionListener{

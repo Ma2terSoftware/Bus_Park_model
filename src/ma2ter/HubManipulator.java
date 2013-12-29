@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RoadDepartment {
+public class HubManipulator {
 
 	private ArrayList<Hub> hubList = new ArrayList<Hub>();
 	

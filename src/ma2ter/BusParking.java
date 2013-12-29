@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 
-public class BusParking extends GraphicObject{
-	static final Point DEFAULT_LOCATION = new Point(50,50);
-	static final Dimension DEFAULT_SIZE = new Dimension(40,40);
-	static final int DEFAULT_CAPACITY = 25;
-	static final String DEFAULT_NAME = "Автобусный парк";
-	static final Color DEFAULT_COLOR = Color.black;
+public class BusParking extends Hub{
+	final Point DEFAULT_LOCATION = new Point(50,50);
+	final Dimension DEFAULT_SIZE = new Dimension(40,40);
+	final int DEFAULT_CAPACITY = 25;
+	final String DEFAULT_NAME = "Автобусный парк";
+	final Color DEFAULT_COLOR = Color.black;
 	
 	private int capacity;
 	//SETTERS
@@ -26,9 +26,6 @@ public class BusParking extends GraphicObject{
 		location = DEFAULT_LOCATION;
 		size = DEFAULT_SIZE;
 		capacity = DEFAULT_CAPACITY;
-		name = DEFAULT_NAME;
-		color = DEFAULT_COLOR;
-		Graph.addGraphicObject(this);
 	}
  	public BusParking(int x, int y, int cap){
 		location = new Point(x,y);

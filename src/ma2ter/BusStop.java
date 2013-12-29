@@ -19,10 +19,9 @@ public class BusStop extends Hub{
 	public BusStop(String n,Point p,int i){
 		location = p;
 		size = DEFAULT_SIZE;
-		name = n;
-		color = DEFAULT_COLOR;
+		//name = n;
+		//color = DEFAULT_COLOR;
 		id = i;
-		Graph.addGraphicObject(this);
 	}
 
 	//METHODS

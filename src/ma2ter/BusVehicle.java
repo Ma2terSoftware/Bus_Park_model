@@ -6,36 +6,33 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 
-public class Bus extends GraphicObject{
+public class BusVehicle extends Vehicle{
 	
 	static final Dimension DEFAULT_SIZE = new Dimension(20,20);
-	static final int MAX_P = 25;
+	static final int DEFAULT_CAPACITY = 40;
 	static final int MAX_V = 80;
 	static final Color DEFAULT_COLOR = Color.green;
 	
-	private int v = 3;
-	private int p = 0;
+	private int speed = 2;
 	private int numRoute = 0;
 	private int id = 0;
 	private boolean isOnRoute = false;
 	private ArrayList<Point> route = new ArrayList<Point>();
-	private int crntDestNum = -1;
+	private int crntDestNum = 0;
 	private Point destination = null;
 	// GETTERS
 	public String getName(){
 		return ""+id;
 	}
 	
-	public int getV(){
-		return v;
-	}
-	public int getP(){
-		return p;
+	public int getSpeed(){
+		return speed;
 	}
 	public boolean OnRoute(){
 		return isOnRoute;
 	}
 	public int getId(){
+		
 		return id;
 	}
 	public int getRoute(){
@@ -47,21 +44,15 @@ public class Bus extends GraphicObject{
 	}
 	public void setRoute(ArrayList<Point> rt){
 		route = rt;
-		destination = getNextDest();
+		destination = rt.get(0);
 	}
 	// CONSTRUCTORS
-	public Bus(int id, Point loc){
+	public BusVehicle(int id, Point loc){
 		location = new Point(loc);
+		capacity = DEFAULT_CAPACITY;
 		size = DEFAULT_SIZE;
-		color = DEFAULT_COLOR;
-		if(id > 1000 && id < 9999){
-			this.id = id;
-			System.out.println("Bus created. id = " + this.id);
-		} else {
-			this.id = 0;
-			System.out.println("Wrong id number of Bus in Bus.java (Method: Bus(int id)). id = " + id);
-		}
-		Graph.addGraphicObject(this);
+		this.id = id;
+		super.makeGraphic(DEFAULT_COLOR);
 	}
 	// METHODS
 	private Point getNextDest(){
@@ -70,22 +61,36 @@ public class Bus extends GraphicObject{
 		else crntDestNum++;
 		return route.get(crntDestNum);
 	}
-	
-	public void move(){
+
+	@Override
+	protected void load() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void unload() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void move() {
+		// TODO Auto-generated method stub
 		if(destination != null){
 			if(location.x != destination.x){
-				if(Math.abs(location.x - destination.x) <= v){
+				if(Math.abs(location.x - destination.x) <= speed){
 					location.x = destination.x;
 				} else {
-					location.x += (location.x < destination.x) ? v : -v;
+					location.x += (location.x < destination.x) ? speed : -speed;
 				}
 			}
 			if(location.y != destination.y){
-				if(Math.abs(location.y - destination.y) <= v)
+				if(Math.abs(location.y - destination.y) <= speed)
 				{
 					location.y = destination.y;
 				} else {
-					location.y += (location.y < destination.y) ? v : -v;
+					location.y += (location.y < destination.y) ? speed : -speed;
 				}
 				
 			}

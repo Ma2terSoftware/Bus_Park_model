@@ -3,13 +3,13 @@ package ma2ter;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BusDepartment {
+public class VehicleManipulator {
 	
 	static final int MAX_BUS = 25;
 	
 	private final BusParking bPark = new BusParking();
 	private int busCount = 0;
-	private ArrayList<Bus> busList = new ArrayList<Bus>();
+	private ArrayList<BusVehicle> busList = new ArrayList<BusVehicle>();
 	
 	// GETTERS
 	public int getBusCount(){
@@ -19,16 +19,16 @@ public class BusDepartment {
 		return bPark;
 	}
 	//CONSTRUCTORS
-	public BusDepartment(){
+	public VehicleManipulator(){
 		
 	}
 	
 	//METHODS
-	public Bus createBus(){
+	public BusVehicle createBus(){
 		if(busCount < MAX_BUS)
 		{
 			busCount++;
-			Bus newBus = new Bus(getFreeId(), bPark.getLocation());
+			BusVehicle newBus = new BusVehicle(getFreeId(), bPark.getLocation());
 			busList.add(newBus);
 			return newBus;
 		} else {
@@ -37,20 +37,20 @@ public class BusDepartment {
 		return null;
 	}
 	
-	public Bus getBusById(int id){
-		for(Bus b:busList){
+	public BusVehicle getBusById(int id){
+		for(BusVehicle b:busList){
 			if (b.getId() == id) return b;
 		}
 		return null;
 	}
-	public Bus getBusByIndex(int ind){
+	public BusVehicle getBusByIndex(int ind){
 		if(ind >= 0 && ind < busCount){
 			return busList.get(ind);
 		}
 		return null;
 	}
 	
-	public void removeBus(Bus bus){
+	public void removeBus(BusVehicle bus){
 		if(bus != null){
 			System.out.print("Deleting bus with id=" + bus.getId());
 			busList.remove(bus);
@@ -64,7 +64,7 @@ public class BusDepartment {
 		}
 	}
 	public void removeBus(int id){
-		Bus b = getBusById(id);
+		BusVehicle b = getBusById(id);
 		removeBus(b);
 	}
 	
@@ -76,7 +76,7 @@ public class BusDepartment {
 		while(!isEnd){
 			isEnd = true;
 			result = rand.nextInt(8999) + 1000;
-			for(Bus b: busList){
+			for(BusVehicle b: busList){
 				if(b.getId() == result){
 					isEnd = false;
 					break;
@@ -88,7 +88,7 @@ public class BusDepartment {
 	}
 	
 	public void move(){
-		for(Bus b:busList){
+		for(BusVehicle b:busList){
 			b.move();
 		}
 	}
