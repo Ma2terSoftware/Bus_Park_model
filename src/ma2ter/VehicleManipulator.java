@@ -8,13 +8,9 @@ public class VehicleManipulator {
 	static final int MAX_BUS = 25;
 	
 	private final BusParking bPark = new BusParking();
-	private int busCount = 0;
-	private ArrayList<BusVehicle> busList = new ArrayList<BusVehicle>();
+	private ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
 	
 	// GETTERS
-	public int getBusCount(){
-		return busCount;
-	}
 	public BusParking getBP(){
 		return bPark;
 	}
@@ -24,48 +20,46 @@ public class VehicleManipulator {
 	}
 	
 	//METHODS
-	public BusVehicle createBus(){
-		if(busCount < MAX_BUS)
-		{
-			busCount++;
-			BusVehicle newBus = new BusVehicle(getFreeId(), bPark.getLocation());
-			busList.add(newBus);
-			return newBus;
-		} else {
-			System.out.println("Overcap!!");
+	public Vehicle createVehicle(VehicleType type){
+		switch(type){
+			case BUS:
+				BusVehicle newBus = new BusVehicle(getFreeId(), bPark.getLocation());
+				vehicleList.add(newBus);
+				return newBus;
+			default:
+				return null;
 		}
-		return null;
+			
 	}
 	
-	public BusVehicle getBusById(int id){
-		for(BusVehicle b:busList){
+	public Vehicle getVehicleById(int id){
+		for(Vehicle b:vehicleList){
 			if (b.getId() == id) return b;
 		}
 		return null;
 	}
-	public BusVehicle getBusByIndex(int ind){
-		if(ind >= 0 && ind < busCount){
-			return busList.get(ind);
+	
+	public Vehicle getVehicleByIndex(int ind){
+		if(ind >= 0 && ind < vehicleList.size()){
+			return vehicleList.get(ind);
 		}
 		return null;
 	}
 	
-	public void removeBus(BusVehicle bus){
-		if(bus != null){
-			System.out.print("Deleting bus with id=" + bus.getId());
-			busList.remove(bus);
-			busCount--;
+	public void removeVehicle(Vehicle vehicle){
+		if(vehicle != null){
+			vehicleList.remove(vehicle);
 			System.out.println(". Deleted!");
 		}
 	}
-	public void removeBus(){
-		if(busCount != 0){
-			removeBus(busList.get(0));
+	public void removeVehicle(){
+		if(vehicleList.size() != 0){
+			removeVehicle(vehicleList.get(0));
 		}
 	}
-	public void removeBus(int id){
-		BusVehicle b = getBusById(id);
-		removeBus(b);
+	public void removeVehicle(int id){
+		Vehicle b = getVehicleById(id);
+		removeVehicle(b);
 	}
 	
 	
@@ -76,7 +70,7 @@ public class VehicleManipulator {
 		while(!isEnd){
 			isEnd = true;
 			result = rand.nextInt(8999) + 1000;
-			for(BusVehicle b: busList){
+			for(Vehicle b: vehicleList){
 				if(b.getId() == result){
 					isEnd = false;
 					break;
@@ -88,7 +82,7 @@ public class VehicleManipulator {
 	}
 	
 	public void move(){
-		for(BusVehicle b:busList){
+		for(Vehicle b:vehicleList){
 			b.move();
 		}
 	}
