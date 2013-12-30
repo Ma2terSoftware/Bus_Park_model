@@ -16,15 +16,16 @@ import javax.swing.Timer;
 public class Engine {
 	JFrame f;
 	
-	VehicleManipulator busdept = new VehicleManipulator();
+	Vehicles vehicles = new Vehicles();
 	HubManipulator roaddept = new HubManipulator();
+	
 	//ACTION LISTENERS
 	private class timerTick implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			busdept.move();
+			vehicles.move();
 			f.repaint();
 		}
 	}
@@ -33,8 +34,8 @@ public class Engine {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			Random rand = new Random();
-			busdept.getBP().testLoc(new Point(rand.nextInt(400), rand.nextInt(400)));
-			Point testDest = new Point(busdept.getBP().getLocation());
+			vehicles.getBP().testLoc(new Point(rand.nextInt(400), rand.nextInt(400)));
+			Point testDest = new Point(vehicles.getBP().getLocation());
 			
 			//busdept.getBusByIndex(0).setDest(testDest);
 		}
@@ -42,7 +43,7 @@ public class Engine {
 	private class buttonAddBusClicked implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			busdept.createBus();
+			vehicles.createVehicle(VehicleType.BUS);
 		}
 		
 	}
@@ -65,7 +66,7 @@ public class Engine {
 			for(Hub h:roaddept.getHubList()){
 				route.add(h.getLocation());
 			}
-			busdept.getBusByIndex(0).setRoute(route);
+			vehicles.getVehicleByIndex(0).setRoute(route);
 		}
 		
 	}
